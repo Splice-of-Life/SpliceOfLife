@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <h1> TESTING - Splice Of Life</h1>
+      <h1> We sell the best mutated creatures known to man - Splice Of Life</h1>
     </>
   );
 }
