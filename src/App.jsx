@@ -1,14 +1,23 @@
-import { useState } from "react";
 import "./App.css";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import HomePage from "./pages/home.jsx";
+import BreedPage from "./pages/breed.jsx";
+import AccountPage from "./pages/account.jsx";
+import LoginPage from "./pages/login.jsx";
+import RegistrationPage from "./pages/registration.jsx";
+import CartPage from "./pages/cart.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1> TESTING - Splice Of Life</h1>
-      <h2> Another Test </h2>
-      <h1> We sell the best mutated creatures known to man - Splice Of Life</h1>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/breed" element={<BreedPage />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
     </>
   );
 }
