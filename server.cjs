@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => res.send("Splice Of Life!"));
+
+App.use(express.static(__dirname+ './dist/assets'))
+
+app.get("/", (req, res) => res.send(__dirname+ "/dist/index.html"));
+
+
 
 app.listen(port, () => console.log(`Server listening on port: ${port}!`));
