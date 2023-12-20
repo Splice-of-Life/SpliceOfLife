@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home.jsx";
 import BreedPage from "./pages/breed.jsx";
 import AccountPage from "./pages/account.jsx";
