@@ -16,7 +16,7 @@ model User {
   password  String
   email     String   @unique
   shoppingCart ShoppingCart[]
-  userCreature UserCreature[]
+  creature  Creature[]
 }
 
 model Creature {
@@ -30,22 +30,15 @@ model Creature {
   inStock   Boolean
   recommended Boolean
   cart      ShoppingCart[]
-  user      UserCreature[]
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model ShoppingCart {
   id        Int      @id @default(autoincrement())
   userId    Int
-  creatureId Int
   user      User     @relation(fields: [userId], references: [id])
-  creature  Creature @relation(fields: [creatureId], references: [id])
-}
-
-model UserCreature {
-  id        Int      @id @default(autoincrement())
-  userId    Int
   creatureId Int
-  user      User     @relation(fields: [userId], references: [id])
   creature  Creature @relation(fields: [creatureId], references: [id])
 }
 
