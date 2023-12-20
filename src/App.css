@@ -1,14 +1,15 @@
-header{
+header {
+  padding: 4px 2rem;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   color: red;
   border-style: solid;
   border-width: 3px;
   border-color: black;
-
 }
 button {
-  background-color: #04AA6D; /* Green */
+  background-color: #04aa6d; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -20,8 +21,7 @@ button {
   border-radius: 25px;
 }
 
-
-footer{
+footer {
   text-align: center;
   border-style: solid;
   border-width: 3px;

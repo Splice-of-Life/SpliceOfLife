@@ -1,26 +1,28 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function seed() {
   // Seed creatures
-  const creatures = []
+  const creatures = [];
   for (let i = 0; i < 5; i++) {
-    creatures.push(await prisma.creature.create({
-      data: {
-        breed: `Breed${i + 1}`,
-        temperment: 'Friendly',
-        lab: `Lab${i + 1}`,
-        food: `Food${i + 1}`,
-        price: 1.23,
-        imageUrl: `image${i + 1}.jpg`,
-        inStock: true,
-        recommended: i % 2 === 0, // will alternate between true and false
-      },
-    }));
+    creatures.push(
+      await prisma.creature.create({
+        data: {
+          breed: `Breed${i + 1}`,
+          temperment: "Friendly",
+          lab: `Lab${i + 1}`,
+          food: `Food${i + 1}`,
+          price: 1.23,
+          imageUrl: `image${i + 1}.jpg`,
+          inStock: true,
+          recommended: i % 2 === 0, // will alternate between true and false
+        },
+      })
+    );
   }
 
   // Seed users
-  for (let username of ['user1', 'user2', 'user3']) {
+  for (let username of ["user1", "user2", "user3"]) {
     const user = await prisma.user.create({
       data: {
         username,
@@ -46,7 +48,7 @@ async function seed() {
     }
   }
 
-  console.log('Seed data added successfully.');
+  console.log("Seed data added successfully.");
   await prisma.$disconnect();
 }
 
