@@ -28,7 +28,6 @@ model Creature {
   imageUrl  String
   inStock   Boolean
   recommended Boolean
-  cart      ShoppingCart[]
   cartCreature CartCreature[]
 }
 
@@ -36,7 +35,6 @@ model ShoppingCart {
   id        Int      @id @default(autoincrement())
   userId    Int      @unique
   user      User     @relation(fields: [userId], references: [id])
-  creature  Creature[]
   cartCreature CartCreature[]
 }
 
