@@ -7,9 +7,7 @@ const jwt = require("jsonwebtoken");
 
 
 router.post("/register", async (req, res, next) => {
-  console.log("REQ", req.body)
   const { username, password, email } = req.body;
-  console.log(username, password, email)
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
     const user = await prisma.user.create({
