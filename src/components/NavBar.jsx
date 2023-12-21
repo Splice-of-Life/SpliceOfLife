@@ -5,6 +5,7 @@ const NavBar = () => {
   return (
     <div className="NavBar">
       <Link to="/">
+      <img src = "https://media.giphy.com/media/3o85xGrC7nPVbA2y3K/giphy.gif" alt="dna strands being exchanged" />
         <img className="logo" src={Image} alt="Splice Of Life Logo" />
       </Link>
       <nav>
