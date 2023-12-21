@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -25,7 +24,6 @@ function BreedPage() {
 
   return (
     <>
-      <NavBar />
       <div>{/* <h1 className="heading">{creature.breed}</h1> */}</div>
       <div className="creature-container">
         <div className="creature-image">
@@ -44,12 +42,6 @@ function BreedPage() {
           </div>
         </div>
       </div>
-      <footer>
-        <h1>
-          {" "}
-          We sell the best mutated creatures known to man - Splice Of Life
-        </h1>
-      </footer>
     </>
   );
 }

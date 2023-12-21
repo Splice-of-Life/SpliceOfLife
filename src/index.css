@@ -19,6 +19,12 @@ body {
   object-fit: contain;
 }
 
+.dna {
+  border-radius: 100%;
+  width: 140px;
+  object-fit: contain;
+}
+
 .navLinks {
   display: flex;
   justify-content: space-between;
@@ -34,7 +40,7 @@ body {
   font-weight: 600;
   background-color: #f5f5f5;
   padding: 6px 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   color: black;
   list-style: none;
@@ -42,7 +48,7 @@ body {
 }
 
 .navLinks a:hover {
-  background-color: orangered;
+  background-color: darkslategray;
   color: white;
   text-decoration: underline;
   text-decoration-thickness: 2px;
