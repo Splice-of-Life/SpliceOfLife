@@ -13,7 +13,8 @@ async function seed() {
           lab: `Lab${i + 1}`,
           food: `Food${i + 1}`,
           price: 1.23,
-          imageUrl: `image${i + 1}.jpg`,
+          // imageUrl: `image${i + 1}.jpg`,
+          imageUrl: "./src/assets/images/Elephox.jpg",
           inStock: true,
           recommended: i % 2 === 0, // will alternate between true and false
         },
