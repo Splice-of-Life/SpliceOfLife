@@ -1,22 +1,16 @@
-
-
-.heading{
+.heading {
   /* display:inline; */
   text-align: center;
-  }
+}
 
-
-#fieldOfCards{
-
+#fieldOfCards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: darkslategray;
-
 }
 
-#animalCard{
-
+#animalCard {
   width: 500 px;
   height: 300 px;
   display: inline-flex;
@@ -33,6 +27,9 @@ h2{
   margin-left: 5px;
 }
 
+img {
+  width: 200px;
+}
 
 img{
   width: 200px;

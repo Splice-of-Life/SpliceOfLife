@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar";
 import "./home.css";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function HomePage() {
@@ -39,11 +40,7 @@ function HomePage() {
       <div id="body">
         <h1 className="heading"> Our Animals</h1>
         <div id="fieldOfCards">
-          <div id="animalCard">
-            {/* this will map from the database to fill breed and image */}
-            <h2> Elephox </h2>
-            <img src = "./src/assets/images/Elephox.jpg" alt = "some image of a mutated animal" />
-          </div>
+
 
             {/* this will map from the database to fill breed and image */}
 

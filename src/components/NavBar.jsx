@@ -1,36 +1,30 @@
 import { Link } from "react-router-dom";
+import Image from "../images/SpliceOfLife_Logo.png";
 
 const NavBar = () => {
   return (
-    <header>
-      <h1> Welcome to Splice Of Life</h1>
+    <div className="NavBar">
+      <Link to="/">
+        <h1>Splice Of Life</h1>
+        <img className="logo" src={Image} alt="Splice Of Life Logo" />
+      </Link>
       <nav>
-        <Link to="/account">
-          <button className="button" id="accountButton">
-            {" "}
-            Account
-          </button>
-        </Link>
-        <Link to="/registration">
-          <button className="button" id="registerButton">
-            {" "}
-            Register
-          </button>
-        </Link>
-        <Link to="/login">
-          <button className="button" id="loginButton">
-            {" "}
-            Login{" "}
-          </button>
-        </Link>
-        <Link to="/cart">
-          <button className="button" id="cartButton">
-            {" "}
-            Cart{" "}
-          </button>
-        </Link>
+        <ul className="navLinks">
+          <li>
+            <a href="/account">Account</a>
+          </li>
+          <li>
+            <a href="/registration">registration</a>
+          </li>{" "}
+          <li>
+            <a href="/login">login</a>
+          </li>{" "}
+          <li>
+            <a href="/cart">cart</a>
+          </li>
+        </ul>
       </nav>
-    </header>
+    </div>
   );
 };
 
