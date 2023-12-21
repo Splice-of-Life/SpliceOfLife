@@ -11,7 +11,7 @@ function BreedPage() {
   useEffect(() => {
     const getCreatures = async () => {
       try {
-        const response = await axios.get(`/api/creatures/4`);
+        const response = await axios.get(`/api/creatures/${id}}`);
         // const response = await axios.get("/api/creatures/");
         const data = response.data;
         setCreature(data);
