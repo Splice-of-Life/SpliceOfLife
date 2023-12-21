@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import Image from "../images/SpliceOfLife_Logo.png";
+import Image from "../assets/images/SpliceOfLife_Logo.png";
 
 const NavBar = () => {
   return (
     <div className="NavBar">
       <Link to="/">
-        <h1>Splice Of Life</h1>
         <img className="logo" src={Image} alt="Splice Of Life Logo" />
       </Link>
       <nav>
