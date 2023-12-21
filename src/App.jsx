@@ -6,10 +6,13 @@ import AccountPage from "./pages/account.jsx";
 import LoginPage from "./pages/login.jsx";
 import RegistrationPage from "./pages/registration.jsx";
 import CartPage from "./pages/cart.jsx";
+import NavBar from "./components/NavBar.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
     <>
+      <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/breed" element={<BreedPage />} />
@@ -18,6 +21,7 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
