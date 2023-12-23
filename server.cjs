@@ -6,6 +6,7 @@ const { Client } = require('pg');
 const jwt = require('jsonwebtoken');
 
 const PORT = process.env.PORT || 3000;
+const secretKey = process.env.SECRET_KEY;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,9 +20,7 @@ client.connect()
   .then(() => console.log('Connected to Database'))
   .catch(err => console.error('Connection error', err.stack));
 
-const secretKey = process.env.SECRET_KEY;
-
-app.post('/api/login', async (req, res) => {
+app.post('/user/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -71,4 +70,3 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}!`));
-
