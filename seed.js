@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 async function seed() {
   // Seed creatures
   const creatures = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 9; i++) {
     creatures.push(
       await prisma.creature.create({
         data: {
