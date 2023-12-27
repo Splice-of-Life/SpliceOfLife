@@ -43,14 +43,14 @@ function HomePage() {
               </span>
               <span> the way</span>
               <br />
-              <span className="leading-relaxed">in genetic Mutations</span>
+              <span className="leading-relaxed">in Genetic Mutations</span>
               <hr className="w-[40vw] border-dashed mt-6 opacity-40" />
             </h1>
           </div>
         </section>
 
         {/* Down arrow icon ================================================ */}
-        <div className="flex justify-center text-white absolute bottom-0 w-screen mb-10 animate-bounce">
+        <div className="flex justify-center text-white absolute bottom-0 w-screen mb-10 animate-bounce img-fade">
           <div className="flex flex-col items-center">
             <p className="mb-4 text-lg">Lets Take a Look</p>
             <ArrowDownCircleIcon />
@@ -65,7 +65,7 @@ function HomePage() {
         />
 
         {/* Grid layout for creatures ================================================ */}
-        <div className="grid w-screen mx-0 grid-cols-1 laptop:grid-cols-2 laptop:grid-rows-3 desktop:grid-cols-3">
+        <div className="fade-grid grid w-screen mx-0 grid-cols-1 laptop:grid-cols-2 laptop:grid-rows-3 desktop:grid-cols-3">
           {/* this will map from the database to fill breed and image */}
           {creatures.map((creature) => (
             <Link key={creature.id} to={`creatures/${creature.id}`}>

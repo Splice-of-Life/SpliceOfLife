@@ -27,3 +27,30 @@ body {
     @apply absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity flex items-center justify-center text-white opacity-0 group-hover:opacity-100 duration-500;
   }
 }
+
+.img-fade {
+  opacity: 1;
+  animation: fade-out linear forwards;
+  animation-timeline: view();
+  animation-range: contain 500px;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-grid {
+  opacity: 0;
+  animation: fade-in linear forwards;
+  animation-timeline: view();
+  animation-range-start: cover;
+  animation-range-end: contain 100px;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}

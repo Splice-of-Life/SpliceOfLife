@@ -10,7 +10,7 @@ const Footer = () => {
       <h1 className="text-xl text-white">
         We sell the best mutated creatures known to man - Splice Of Life
       </h1>
-      <p className="text-slate-300">Site by: Xavier | Joel | Travynn | Dane</p>
+      <p className="opacity-30">Site by: Xavier | Joel | Travynn | Dane</p>
     </footer>
   );
 };
