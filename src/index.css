@@ -1,92 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  padding: 0px;
-  margin: 0px auto;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  padding: 0px;
+  margin: auto;
+  max-width: 3400px;
 }
 
-.NavBar {
-  padding: 2rem;
-  align-items: end;
-  display: flex;
-  justify-content: space-between;
-}
+@layer components {
+  .btn {
+    @apply hover:bg-slate-100 px-6 py-1 rounded-lg hover:shadow-md font-semibold;
+  }
 
-.logo {
-  width: 60%;
-  height: 60%;
-  object-fit: contain;
-}
+  .btn2 {
+    @apply bg-slate-200 shadow-md hover:bg-slate-500 hover:text-white px-6 py-1 rounded-lg hover:shadow-md font-semibold;
+  }
 
-.dna {
-  border-radius: 100%;
-  width: 140px;
-  object-fit: contain;
-}
-
-.navLinks {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40%;
-}
-
-.navLinks li {
-  list-style: none;
-}
-
-.navLinks a {
-  font-weight: 600;
-  background-color: #f5f5f5;
-  padding: 6px 10px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: black;
-  list-style: none;
-  margin: 0px 1.5rem;
-}
-
-.navLinks a:hover {
-  background-color: darkslategray;
-  color: white;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 16px;
-}
-
-.title_link {
-  text-decoration: none;
-  color: black;
-}
-
-.creature-container {
-  max-width: 1600px;
-  min-width: 580px;
-  margin: 0px auto;
-  display: grid;
-  grid-template-columns: 60% 40%;
-  column-gap: 20px;
-  background-color: red;
-  height: 80vh;
-  width: 100vw;
-}
-
-.creature-details {
-  padding-top: 4rem;
-  padding-left: 2rem;
-  border-left: 3px solid rgb(236, 236, 236);
-  background-color: blue;
-  justify-content: center;
-  /* width: 100%; */
-}
-
-.creature-image {
-  background-color: green;
-}
-
-.description-text {
-  width: 90%;
-  height: 50%;
-  background-color: red;
+  .img-text-overlay {
+    @apply absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity flex items-center justify-center text-white opacity-0 group-hover:opacity-100 duration-500;
+  }
 }

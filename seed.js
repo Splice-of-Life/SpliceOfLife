@@ -3,6 +3,8 @@ const prisma = new PrismaClient();
 
 async function seed() {
   // Seed creatures
+
+
   // const creatures = [];
   // for (let i = 0; i < 5; i++) {
   //   creatures.push(

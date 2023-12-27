@@ -1,4 +1,3 @@
-import "./home.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -16,32 +15,29 @@ function HomePage() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getCreatures();
   }, []);
 
-  const handleClick = (id) => {
-    console.log(`button was clicked`, id); // passed the id of the crature that was clicked
-
-    //*********************  TODO  point clicked creature to the creature page ********************** */
-  };
-
   return (
     <>
-      <div id="body">
-        <h1 className="heading"> Our Animals</h1>
-        <div id="fieldOfCards">
+      <div>
+        <h1> Our Animals</h1>
+        <div className="grid w-screen mx-0 grid-cols-1 laptop:grid-cols-2 laptop:grid-rows-3 desktop:grid-cols-3">
           {/* this will map from the database to fill breed and image */}
 
           {creatures.map((creature) => (
-            <Link key={creature.id} to={`/creature/${creature.id}`}>
-              <div id="animalCard" onClick={() => handleClick(creature.id)}>
-                <h2> {creature.breed}</h2>
-
+            <Link key={creature.id} to={`creatures/${creature.id}`}>
+              <div className="card-primary group relative overflow-hidden">
                 <img
+                  className="w-full h-auto"
                   src={creature.imageUrl}
                   alt="some image of a mutated animal"
                 />
+                <div className="img-text-overlay">
+                  <h2 className="text-6xl font-bold">{creature.breed}</h2>
+                </div>
               </div>
             </Link>
           ))}
