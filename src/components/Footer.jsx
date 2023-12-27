@@ -3,7 +3,7 @@ import Image from "../assets/images/SpliceOfLife_Logo.png";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between px-12 py-12 bg-black">
+    <footer className="flex w-screen justify-between px-12 py-12 bg-black bottom-0">
       <Link className="flex gap-6 items-center" to="/">
         <img className="w-[8rem]" src={Image} alt="Splice Of Life Logo" />
       </Link>
