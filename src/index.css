@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  color-scheme: light dark;
+}
+
 body {
+  background-color: black;
   box-sizing: border-box;
   padding: 0px;
   margin: auto;
