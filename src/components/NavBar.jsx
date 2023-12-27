@@ -27,8 +27,9 @@ const NavBar = () => {
         <img className="w-[12rem]" src={Image} alt="Splice Of Life Logo" />
       </Link>
       <nav>
+
         <ul className="flex gap-6 text-lg items-center h-full">
-          <li className="btn">
+          <li className="btn"
             <a href="/">Home</a>
           </li>
           <li className="btn">
