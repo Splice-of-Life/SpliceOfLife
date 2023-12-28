@@ -29,7 +29,7 @@ function BreedPage() {
         <div className=" flex items-center justify-center gap-11 py-20">
           <div className="card-primary group relative overflow-hidden">
             <img
-              className="w-[60rem] h-auto transform transition-transform hover:scale-150 hover:translate-y-1 duration-1000"
+              className="w-[60rem] h-auto transform transition-transform hover:scale-125 hover:translate-y-1 duration-1000"
               src={creature.imageUrl}
               alt="creature"
             />
@@ -45,7 +45,7 @@ function BreedPage() {
             <div>
               <p>{creature.description}</p>
             </div>
-            <button onClick={handlebackbtn} className="btn2 mt-8">
+            <button onClick={handlebackbtn} className="btn2 mt-8 ">
               Back
             </button>
           </div>

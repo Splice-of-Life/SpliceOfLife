@@ -37,7 +37,7 @@ function HomePage() {
             </h1>
           </div>
           <div className=" w-[80vw]">
-            <h1 className="w-[60rem] text-white text-8xl mt-[200px]">
+            <h1 className="w-[60rem] text-white text-8xl mt-[200px] ml-16">
               <span className="bg-white text-black p-4 font-semibold">
                 Leading
               </span>
@@ -50,7 +50,7 @@ function HomePage() {
         </section>
 
         {/* Down arrow icon ================================================ */}
-        <div className="flex justify-center text-white absolute bottom-0 w-screen mb-10 animate-bounce img-fade">
+        <div className="flex justify-center text-white absolute bottom-0 w-screen mb-10 animate-bounce img-fade z-30">
           <div className="flex flex-col items-center">
             <p className="mb-4 text-lg">Lets Take a Look</p>
             <ArrowDownCircleIcon />
@@ -59,7 +59,7 @@ function HomePage() {
 
         {/* background image ================================================ */}
         <img
-          className="w-screen h-screen opacity-40"
+          className="w-screen h-screen opacity-50"
           src={Image}
           alt="DNA strands"
         />

@@ -4,14 +4,18 @@
 
 * {
   color-scheme: light dark;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 body {
-  background-color: black;
-  box-sizing: border-box;
-  padding: 0px;
-  margin: auto;
-  max-width: 3400px;
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -20,7 +24,7 @@ body {
   }
 
   .btn2 {
-    @apply bg-slate-200 shadow-md hover:bg-slate-500 hover:text-white px-6 py-1 rounded-lg hover:shadow-md font-semibold;
+    @apply bg-black text-white shadow-md hover:bg-white hover:text-black ring-white ring-2 px-6 py-1 rounded-lg hover:shadow-md font-semibold;
   }
 
   .img-text-overlay {
@@ -32,7 +36,8 @@ body {
   opacity: 1;
   animation: fade-out linear forwards;
   animation-timeline: view();
-  animation-range: contain 500px;
+  animation-range-start: cover;
+  animation-range-end: contain 700px;
 }
 
 @keyframes fade-out {
@@ -53,4 +58,8 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.vh {
+  height: 100vh;
 }
