@@ -10,35 +10,44 @@ function BreedPage() {
   useEffect(() => {
     const getCreatures = async () => {
       try {
-        const response = await axios.get(`/api/creatures/${id}}`);
-        // const response = await axios.get("/api/creatures/");
-        const data = response.data;
-        setCreature(data);
-        console.log(data);
+        const response = await axios.get(`/api/creatures/${id}`);
+        setCreature(response.data);
       } catch (err) {
         console.log(err);
       }
     };
     getCreatures();
-  }, []);
+  }, [id]); // Add id as a dependency to useEffect
+
+  const handlebackbtn = () => {
+    window.history.back();
+  };
 
   return (
     <>
-      <div>{/* <h1 className="heading">{creature.breed}</h1> */}</div>
-      <div className="creature-container">
-        <div className="creature-image">
-          <img src="https://placehold.jp/400x500.png" alt="creature" />
-        </div>
-        <div className="creature-details">
-          <h2>Breed: {creature.breed}</h2>
-          <h2>Temperment: {creature.temperment}</h2>
-          <h2>Lab: {creature.lab}</h2>
-          <h2>Food: {creature.food}</h2>
-          <h2>Price: {creature.price}</h2>
-          <h2>In Stock: {creature.inStock ? "Yes" : "No"}</h2>
-          <h2>Recommended: {creature.recommended ? "Yes" : "No"}</h2>
-          <div className="description-text">
-            <p></p>
+      <div className="w-screen h-screen">
+        <div className=" flex items-center justify-center gap-11 py-20">
+          <div className="card-primary group relative overflow-hidden">
+            <img
+              className="w-[60rem] h-auto transform transition-transform hover:scale-150 hover:translate-y-1 duration-1000"
+              src={creature.imageUrl}
+              alt="creature"
+            />
+          </div>
+          <div>
+            <h2>Breed: {creature.breed}</h2>
+            <h2>Temperament: {creature.temperament}</h2>
+            <h2>Lab: {creature.lab}</h2>
+            <h2>Food: {creature.food}</h2>
+            <h2>Price: {creature.price}</h2>
+            <h2>In Stock: {creature.inStock ? "Yes" : "No"}</h2>
+            <h2>Recommended: {creature.recommended ? "Yes" : "No"}</h2>
+            <div>
+              <p>{creature.description}</p>
+            </div>
+            <button onClick={handlebackbtn} className="btn2 mt-8">
+              Back
+            </button>
           </div>
         </div>
       </div>

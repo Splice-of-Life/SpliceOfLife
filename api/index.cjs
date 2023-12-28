@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 
 // set `req.user` if possible
 router.use(async (req, res, next) => {
-  const prefix = 'Bearer ';
-  const auth = req.header('Authorization');
+  const prefix = "Bearer ";
+  const auth = req.header("Authorization");
 
   if (!auth) {
     next();
@@ -19,12 +19,12 @@ router.use(async (req, res, next) => {
         const user = await prisma.user.findUnique({
           where: { id },
         });
-        req.user = user
+        req.user = user;
         next();
       } else {
         next({
-          name: 'AuthorizationHeaderError',
-          message: 'Authorization token malformed',
+          name: "AuthorizationHeaderError",
+          message: "Authorization token malformed",
         });
       }
     } catch ({ name, message }) {
@@ -32,7 +32,7 @@ router.use(async (req, res, next) => {
     }
   } else {
     next({
-      name: 'AuthorizationHeaderError',
+      name: "AuthorizationHeaderError",
       message: `Authorization token must start with ${prefix}`,
     });
   }
