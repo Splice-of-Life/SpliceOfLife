@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 
 const PORT = process.env.PORT || 3000;
+const secretKey = process.env.SECRET_KEY;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,7 @@ client
   .then(() => console.log("Connected to Database"))
   .catch((err) => console.error("Connection error", err.stack));
 
+app.post('/user/login', async (req, res) => {
 const secretKey = process.env.SECRET_KEY;
 
 app.post("/api/login", async (req, res) => {
@@ -74,6 +76,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong!" });
 });
 
+
 app.use("/api", require("./api/index.cjs"));
+
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}!`));
