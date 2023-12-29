@@ -53,10 +53,10 @@ const NavBar = () => {
               <a className="btn" onClick={toggleSearch} href="#">
                 Search
               </a>
-              <div className="absolute z-30 mt-6 bg-white p-6 rounded-b-xl pt-12">
+              <div className="absolute z-30 mt-6 -ml-[8rem] bg-white p-6 rounded-b-xl pt-12">
                 <form className="flex gap-4" onSubmit={handleSearch}>
                   <input
-                    className="rounded-lg p-1 text-white"
+                    className="rounded-lg p-1 text-white px-6"
                     type="text"
                     placeholder="Search..."
                   />

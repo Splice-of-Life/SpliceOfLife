@@ -36,7 +36,7 @@ function BreedPage() {
           </div>
           <div>
             <h2>Breed: {creature.breed}</h2>
-            <h2>Temperament: {creature.temperament}</h2>
+            <h2>Temperament: {creature.temperment}</h2>
             <h2>Lab: {creature.lab}</h2>
             <h2>Food: {creature.food}</h2>
             <h2>Price: {creature.price}</h2>
