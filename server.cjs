@@ -24,11 +24,11 @@ client
   .then(() => console.log("Connected to Database"))
   .catch((err) => console.error("Connection error", err.stack));
 
-app.post('/user/login', async (req, res) => {
-const secretKey = process.env.SECRET_KEY;
+app.post("/user/login", async (req, res) => {
+  const secretKey = process.env.SECRET_KEY;
 
-app.post("/api/login", async (req, res) => {
-  const { username, password } = req.body;
+  // app.post("/api/login", async (req, res) => {
+  //   const { username, password } = req.body;
 
   try {
     const query = "SELECT * FROM users WHERE username = $1 AND password = $2";
@@ -76,8 +76,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Something went wrong!" });
 });
 
-
 app.use("/api", require("./api/index.cjs"));
-
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}!`));

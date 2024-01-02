@@ -30,27 +30,28 @@ function HomePage() {
     <>
       <div>
         {/* Hero section ================================================ */}
-        <section className="absolute z-20 flex ">
+        <section className="absolute z-20 flex  w-screen ">
           <div>
-            <h1 className="text-white -rotate-90 text-1xl font-bold mt-[40vh]">
+            <h1 className="text-white -rotate-90 text-1xl font-bold mt-[50vh] ">
               A LITTLE BIT OF THIS, A LITTLE BIT OF THAT
             </h1>
           </div>
           <div className=" w-[80vw]">
-            <h1 className="w-[60rem] text-white text-8xl mt-[200px]">
-              <span className="bg-white text-black p-4 font-semibold">
-                Leading
-              </span>
+            <h1 className="w-[60rem] text-white text-8xl mt-[200px] ml-16">
+              <span className="bg-white text-black p-4 font-bold">Leading</span>
               <span> the way</span>
               <br />
               <span className="leading-relaxed">in Genetic Mutations</span>
-              <hr className="w-[40vw] border-dashed mt-6 opacity-40" />
             </h1>
+            <p className="ml-16 text-xl font-thin">
+              We sell the best mutated creatures known to man
+            </p>
+            <hr className="ml-[4rem] w-[40vw] border-dashed mt-6 opacity-40" />
           </div>
         </section>
 
         {/* Down arrow icon ================================================ */}
-        <div className="flex justify-center text-white absolute bottom-0 w-screen mb-10 animate-bounce img-fade">
+        <div className="flex justify-center text-white absolute bottom-0 w-screen mb-10 animate-bounce img-fade z-30">
           <div className="flex flex-col items-center">
             <p className="mb-4 text-lg">Lets Take a Look</p>
             <ArrowDownCircleIcon />
@@ -65,11 +66,11 @@ function HomePage() {
         />
 
         {/* Grid layout for creatures ================================================ */}
-        <div className="fade-grid grid w-screen mx-0 grid-cols-1 laptop:grid-cols-2 laptop:grid-rows-3 desktop:grid-cols-3">
+        <div className=" grid w-screen mx-0 grid-cols-1 laptop:grid-cols-2 laptop:grid-rows-3 desktop:grid-cols-3">
           {/* this will map from the database to fill breed and image */}
           {creatures.map((creature) => (
             <Link key={creature.id} to={`creatures/${creature.id}`}>
-              <div className="card-primary group relative overflow-hidden">
+              <div className="card-primary group relative overflow-hidden ">
                 <img
                   className="w-full h-auto"
                   src={creature.imageUrl}
