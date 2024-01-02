@@ -27,6 +27,10 @@ body {
     @apply bg-black text-white shadow-md hover:bg-white hover:text-black ring-white ring-2 px-6 py-1 rounded-lg hover:shadow-md font-semibold;
   }
 
+  .btn3 {
+    @apply bg-black text-white shadow-md hover:bg-blue-400 hover:text-black ring-white ring-2 px-6 py-1 rounded-lg hover:shadow-md font-semibold hover:cursor-pointer;
+  }
+
   .img-text-overlay {
     @apply absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity flex items-center justify-center text-white opacity-0 group-hover:opacity-100 duration-500;
   }
