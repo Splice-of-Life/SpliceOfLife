@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const express = require("express");
 const app = express();
 const { Client } = require("pg");
@@ -9,9 +7,21 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 const secretKey = process.env.SECRET_KEY;
 
+require("dotenv").config();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/assets", express.static(__dirname + "./dist/assets"));
+app.use(express.static(path.join(__dirname, "./dist")));
+app.use("/assets", express.static(__dirname + "./dist/assets"));
+app.use(express.static(path.join(__dirname, "./dist")));
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Something went wrong!" });
+});
+app.use("/api", require("./api/index.cjs"));
 
+// Client connection ====================================
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -24,11 +34,9 @@ client
   .then(() => console.log("Connected to Database"))
   .catch((err) => console.error("Connection error", err.stack));
 
+// Routes ===============================================
 app.post("/user/login", async (req, res) => {
   const secretKey = process.env.SECRET_KEY;
-
-  // app.post("/api/login", async (req, res) => {
-  //   const { username, password } = req.body;
 
   try {
     const query = "SELECT * FROM users WHERE username = $1 AND password = $2";
@@ -45,10 +53,7 @@ app.post("/user/login", async (req, res) => {
   }
 });
 
-app.use("/assets", express.static(__dirname + "./dist/assets"));
-
-app.use(express.static(path.join(__dirname, "./dist")));
-
+// Middleware ===========================================
 function verifyToken(req, res, next) {
   const token = req.headers["authorization"];
 
@@ -65,17 +70,10 @@ function verifyToken(req, res, next) {
   });
 }
 
+// Protected route ======================================
 app.get("/auth", verifyToken, (req, res) => {
   res.json({ message: "This is a protected route!", user: req.user });
 });
 
-// app.use("*", (req, res) => res.send("Splice Of Life!"));
-
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: "Something went wrong!" });
-});
-
-app.use("/api", require("./api/index.cjs"));
-
+// Server Listen ========================================
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}!`));

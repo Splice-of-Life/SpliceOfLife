@@ -18,7 +18,10 @@ function LoginPage() {
   const logIn = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("/api/login", { username, password });
+      const response = await axios.post("/api/users/login", {
+        username,
+        password,
+      });
       console.log(response.data.message);
       // Handle successful login, e.g., store token in localStorage
     } catch (error) {
