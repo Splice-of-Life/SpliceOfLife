@@ -7,7 +7,12 @@ const jwt = require("jsonwebtoken");
 
 
 router.post("/register", async (req, res, next) => {
+  // this route registers a new user
   const { username, password, email } = req.body;
+  if (!(username && password && email)) {
+    res.status(400).send("Username, password, and email are required");
+    return next()
+  }
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
     const user = await prisma.user.create({
@@ -20,13 +25,15 @@ router.post("/register", async (req, res, next) => {
     delete user.password;
     res.send(user);
   } catch (error) {
-    next(error);
+    // TODO: i think it could be something else that we could handle
+    res.status(400).send("Username or email already exists")
+    next();
   }
 });
 
 router.post("/login", async (req, res, next) => {
+  // this route takes a username and password and returns a JWT
   const { username, password } = req.body;
-  console.log("BODY", req.body)
   try {
     const user = await prisma.user.findUnique({
       where: { username },
