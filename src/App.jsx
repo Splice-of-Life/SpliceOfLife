@@ -23,7 +23,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
