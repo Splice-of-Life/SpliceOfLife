@@ -34,7 +34,7 @@ function BreedPage() {
 
   return (
     <>
-      <div className="w-screen h-screen">
+      <div className="w-screen h-fit">
         <div className=" flex items-center justify-center gap-11 py-20">
           <div className="card-primary group relative overflow-hidden">
             <img
