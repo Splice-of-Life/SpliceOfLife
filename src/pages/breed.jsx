@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function BreedPage() {
   // gets the id from the url
@@ -22,6 +24,13 @@ function BreedPage() {
   const handlebackbtn = () => {
     window.history.back();
   };
+
+  // const handlecartbtn = () =>{
+  //   console.log("cart button pushed");
+  //   window.location.href = `/cart?id=${id}`;
+    
+
+  // };
 
   return (
     <>
@@ -48,6 +57,16 @@ function BreedPage() {
             <button onClick={handlebackbtn} className="btn2 mt-8 ">
               Back
             </button>
+            {/* this section conditionally renders an add to cart button if it is in stock */}
+              { creature.inStock === true && (
+                <>
+                  <Link to= {`/cart?id=${id}` }>
+                    <button className="btn2 mt-8 ">
+                      Add to Cart
+                    </button>
+                  </Link>
+                </>
+              )}
           </div>
         </div>
       </div>
