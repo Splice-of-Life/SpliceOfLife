@@ -30,10 +30,10 @@ const NavBar = () => {
             <a href="/registration">Registration</a>
           </li>
           <li className="btn">
-            <a href="/account">Account</a>
+            <a href="/login">Login</a>
           </li>
           <li className="btn">
-            <a href="/login">Login</a>
+            <a href="/account">Account</a>
           </li>
         </ul>
       </nav>

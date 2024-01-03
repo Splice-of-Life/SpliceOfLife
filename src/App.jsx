@@ -8,6 +8,7 @@ import CartPage from "./pages/cart.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Footer from "./components/Footer.jsx";
 import "./index.css";
+import Admin from "./pages/admin.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </>
