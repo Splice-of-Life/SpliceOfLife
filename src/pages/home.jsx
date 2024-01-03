@@ -72,7 +72,7 @@ function HomePage() {
             <Link key={creature.id} to={`creatures/${creature.id}`}>
               <div className="card-primary group relative overflow-hidden ">
                 <img
-                  className="w-full h-auto"
+                  className="w-full h-[700px]"
                   src={creature.imageUrl}
                   alt="some image of a mutated animal"
                 />

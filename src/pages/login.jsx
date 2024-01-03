@@ -6,6 +6,7 @@ import { HandIcon } from "lucide-react";
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [invalidLogin, setInvalidLogin] = useState(false); // Add this line
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -13,6 +14,10 @@ function LoginPage() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleInvalidLogin = () => {
+    setInvalidLogin(!invalidLogin);
   };
 
   const logIn = async (event) => {
@@ -24,6 +29,11 @@ function LoginPage() {
       });
       console.log(response.data.message);
       // Handle successful login, e.g., store token in localStorage
+      if (response.data.message === "Login successful") {
+        window.location.href = "/";
+      } else {
+        handleInvalidLogin();
+      }
     } catch (error) {
       console.error("Login failed:", error.response.data.message);
       // Handle login error, e.g., show error message
@@ -40,30 +50,65 @@ function LoginPage() {
           </h1>
           <p>Please enter your username and password!</p>
           <br />
-
-          <form className="text-white" onSubmit={logIn}>
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={handleUsernameChange}
-              className="py-2 rounded-md px-6"
-            />
-            <br />
-            <br />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-              className="py-2 rounded-md px-6"
-            />
-            <br />
-            <br />
-            <button className="font-bold text-lg btn text-black" type="submit">
-              Login
-            </button>
-          </form>
+          {invalidLogin ? (
+            <form className="text-white" onSubmit={logIn}>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={handleUsernameChange}
+                className="py-2 rounded-md px-6"
+              />
+              <br />
+              <br />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                className="py-2 rounded-md px-6"
+              />
+              <br />
+              <br />
+              <button
+                className="font-bold text-lg btn text-black"
+                type="submit"
+              >
+                Login
+              </button>
+            </form>
+          ) : (
+            <form className="text-white" onSubmit={logIn}>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={handleUsernameChange}
+                className="py-2 rounded-md px-6"
+              />
+              <br />
+              <br />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                className="py-2 rounded-md px-6"
+              />
+              <br />
+              <br />
+              <h1 className="text-black">
+                Please check your username or password
+              </h1>
+              <br />
+              <button
+                className="font-bold text-lg btn text-black"
+                type="submit"
+              >
+                Login
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </>
