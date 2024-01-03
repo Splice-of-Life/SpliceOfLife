@@ -3,18 +3,20 @@ const app = express();
 const { Client } = require("pg");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const morgan = require("morgan");
 
 const PORT = process.env.PORT || 3000;
 const secretKey = process.env.SECRET_KEY;
 
 require("dotenv").config();
 
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/assets", express.static(__dirname + "./dist/assets"));
+
+// app.use("/assets", express.static(__dirname + "./dist/assets"));
 app.use(express.static(path.join(__dirname, "./dist")));
-app.use("/assets", express.static(__dirname + "./dist/assets"));
-app.use(express.static(path.join(__dirname, "./dist")));
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Something went wrong!" });
@@ -73,6 +75,10 @@ function verifyToken(req, res, next) {
 // Protected route ======================================
 app.get("/auth", verifyToken, (req, res) => {
   res.json({ message: "This is a protected route!", user: req.user });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./dist", "index.html"));
 });
 
 // Server Listen ========================================
