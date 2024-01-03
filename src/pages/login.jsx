@@ -24,6 +24,11 @@ function LoginPage() {
       });
       console.log(response.data.message);
       // Handle successful login, e.g., store token in localStorage
+      if (response.data.message === "Login successful") {
+        window.location.href = "/";
+      } else {
+        handleInvalidLogin();
+      }
     } catch (error) {
       console.error("Login failed:", error.response.data.message);
       // Handle login error, e.g., show error message
