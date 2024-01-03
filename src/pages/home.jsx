@@ -15,7 +15,7 @@ function HomePage() {
     try {
       const request = await fetch("/api/creatures");
       const response = await request.json();
-      console.log(response);
+      // console.log(response);
       setCreatures(response);
     } catch (error) {
       console.log(error);
