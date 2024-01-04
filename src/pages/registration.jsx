@@ -58,7 +58,7 @@ export default function RegistrationPage() {
             placeholder="Username"
             value={username}
             onChange={handleUsernameChange}
-            className="py-2 rounded-md px-6 black-font"
+            className="py-2 rounded-md px-6"
           />
           <br />
           <br />
@@ -67,7 +67,7 @@ export default function RegistrationPage() {
             placeholder="Password"
             value={password}
             onChange={handlePasswordChange}
-            className="py-2 rounded-md px-6 black-font"
+            className="py-2 rounded-md px-6"
           />
           <br />
           <br />
@@ -76,7 +76,7 @@ export default function RegistrationPage() {
             placeholder="email"
             value={email}
             onChange={handleEmailChange}
-            className="py-2 rounded-md px-6 black-font"
+            className="py-2 rounded-md px-6"
           />
           <br />
           <br />
