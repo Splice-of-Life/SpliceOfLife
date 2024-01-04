@@ -1,95 +1,103 @@
+import React, { useState } from "react";
+import image from "../assets/images/SpliceOfLife_Logo.png";
 import axios from "axios";
-import { useState } from 'react';
 
-
-function FormField({ label, placeholder, handler, password = false }) {
-  const inputStyle = { color: 'black', width: "200px", outline: 'none', paddingLeft: '5px' }
-  if (password) {
-    inputStyle['-webkit-text-security'] = 'circle'
-  }
-  return (
-    <div className="formField" style={{ marginBottom: '5px' }}>
-      <label style={{ width: "100px", display: 'inline-block' }} className="formLabel">{label}: </label>
-      <input
-        style={inputStyle}
-        className="formInput"
-        onChange={handler}
-        type="text"
-        placeholder={placeholder}
-      />
-    </div>
-  )
-}
-
-export default function RegistrationPage() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function RegistrationPage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [response, setResponse] = useState('')
 
-  function handleUsernameChange(event) {
+  const handleUsernameChange = (event) => {
     setUsername(event.target.value);
-  }
-
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
-
-  function handlePasswordChange(event) {
+  };
+  const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  }
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-  async function handleSubmit() {
-    const response = await axios.post(`${import.meta.env.VITE_BASE_API_URL}/users/register`, {
-      username,
-      email,
-      password,
-    },
-      {
-        validateStatus: () => true,
+  const handleRegister = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post("api/users/register", {
+        username: username,
+        password: password,
+        email: email,
+      },
+        {
+          validateStatus: () => true,
+        },
+      );
+      if (response.status === 200) {
+        setResponse('Registration Successful')
+      } else {
+        // TODO: get error message from response
+        setResponse(`Error: ${response.data}`)
       }
-    );
-    const data = response.data;
-    if (response.status === 200) {
-      setResponse('Registration Successful')
-    } else {
-      // TODO: get error message from response
-      setResponse(`Error: ${response.data}`)
-    }
-  }
 
+
+      // const data = response.data;
+      // console.log("username:", data.username, "email:", data.email);
+
+      console.log("User has been registered");
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Registration failed:", error.message);
+    }
+  };
   return (
-    <>
-      <div style={{ marginLeft: '50px', color: 'white', }}>
-        <div style={{ fontSize: '30px' }}>Register Now</div>
-        {/* Create Register Form with Username and Password */}
-        <div className="form">
-          <FormField
-            label="Username"
-            handler={handleUsernameChange}
-            placeholder="username"
+    <section className="vh w-screen flex justify-center items-center ">
+      <div className="text-black flex flex-col justify-center w-[600px] h-[500px] bg-white p-10 text-center rounded-lg">
+        <img className="w-60 mb-4 mx-auto" src={image} alt="" />
+        <h1 className="text-lg font-semibold heading mb-2">
+          Welcome to Splice of Life
+        </h1>
+        <p>To register, enter a username, password, and email</p>
+        <br />
+
+        <form className="text-white">
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={handleUsernameChange}
+            className="py-2 rounded-md px-6"
           />
-          <FormField
-            label="Email"
-            handler={handleEmailChange}
-            placeholder="username@email.com"
+          <br />
+          <br />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+            className="py-2 rounded-md px-6"
           />
-          <FormField
-            label="Password"
-            handler={handlePasswordChange}
-            placeholder="◦◦◦◦◦◦◦◦◦◦"
-            password={true}
+          <br />
+          <br />
+          <input
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={handleEmailChange}
+            className="py-2 rounded-md px-6"
           />
-        </div>
-        <button
-          style={{ backgroundColor: 'white', color: 'black' }}
-          disabled={!(username && email && password)}
-          onClick={handleSubmit} className="btn"
-        >Register</button>
+          <br />
+          <br />
+          <button
+            className="font-bold text-lg btn text-black"
+            type="submit"
+            onClick={handleRegister}
+          >
+            Register
+          </button>
+        </form>
         <div>
           {response}
         </div>
-      </div >
-    </>
+      </div>
+    </section>
   );
 }

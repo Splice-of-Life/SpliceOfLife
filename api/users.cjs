@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
-
+// POST /api/users/register //
 router.post("/register", async (req, res, next) => {
   // this route registers a new user
   const { username, password, email } = req.body;
@@ -15,6 +15,10 @@ router.post("/register", async (req, res, next) => {
   }
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
+    // Hash the password using bcrypt
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    // Create a new user in the database
     const user = await prisma.user.create({
       data: {
         username,
@@ -31,34 +35,32 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
+// POST /api/users/login //
 router.post("/login", async (req, res, next) => {
   // this route takes a username and password and returns a JWT
   const { username, password } = req.body;
+  const secretKey = process.env.SECRET_KEY;
+
   try {
     const user = await prisma.user.findUnique({
-      where: { username },
+      where: {
+        username,
+      },
     });
-    if (!user) {
-      res.status(401).send("User not found");
-    } else {
-      const passwordMatch = await bcrypt.compare(password, user.password);
-      if (!passwordMatch) {
-        res.status(401).send("Incorrect password");
-      } else {
-        const token = jwt.sign({
-          id: user.id,
-          username: user.username
-        }, process.env.JWT_SECRET, {
-          expiresIn: '1w'
-        });
 
-        res.send({
-          message: "you're logged in!",
-          token
-        });
+    if (!user) {
+      res.status(401).json({ message: "Invalid credentials" });
+    } else {
+      const validPassword = await bcrypt.compare(password, user.password);
+
+      if (!validPassword) {
+        res.status(401).json({ message: "Invalid credentials" });
+      } else {
+        const token = jwt.sign({ username }, secretKey, { expiresIn: "1h" });
+
+        res.status(200).json({ message: "Login successful", token });
       }
     }
-    // return jwt token
   } catch (error) {
     next(error);
   }
