@@ -42,6 +42,7 @@ model CartCreature {
   id        Int      @id @default(autoincrement())
   shoppingCartId    Int
   creatureId Int
+  quantity Int
   creature Creature @relation(fields: [creatureId], references: [id])
   shoppingCart ShoppingCart @relation(fields: [shoppingCartId], references: [id])
 }

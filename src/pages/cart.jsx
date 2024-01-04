@@ -52,7 +52,7 @@ const CartPage = () => {
   console.log(itemsInCart);
 
   // **************** TODO *****************************
-  //create cart.cjs
+  //create api/cart.cjs
   //create routes to cart.cjs
   //create CRUD for cart.cjs
   //bring in the user id
