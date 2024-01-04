@@ -30,7 +30,7 @@ router.post("/register", async (req, res, next) => {
 // POST /api/users/login //
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
-  const secretKey = process.env.SECRET_KEY;
+  const secretKey = process.env.JWT_SECRET;
 
   try {
     const user = await prisma.user.findUnique({
@@ -47,7 +47,8 @@ router.post("/login", async (req, res, next) => {
       if (!validPassword) {
         res.status(401).json({ message: "Invalid credentials" });
       } else {
-        const token = jwt.sign({ username }, secretKey, { expiresIn: "1h" });
+        delete user.password;
+        const token = jwt.sign(user, secretKey, { expiresIn: "1h" });
 
         res.status(200).json({ message: "Login successful", token });
       }
