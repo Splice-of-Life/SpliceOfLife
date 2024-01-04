@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import image from "../assets/images/SpliceOfLife_Logo.png";
 import axios from "axios";
 
-function RegistrationPage() {
+export default function RegistrationPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -33,17 +33,11 @@ function RegistrationPage() {
       );
       if (response.status === 200) {
         setResponse('Registration Successful')
+        window.location.href = "/login";
       } else {
         // TODO: get error message from response
         setResponse(`Error: ${response.data}`)
       }
-
-
-      // const data = response.data;
-      // console.log("username:", data.username, "email:", data.email);
-
-      console.log("User has been registered");
-      window.location.href = "/login";
     } catch (error) {
       console.error("Registration failed:", error.message);
     }
@@ -64,7 +58,7 @@ function RegistrationPage() {
             placeholder="Username"
             value={username}
             onChange={handleUsernameChange}
-            className="py-2 rounded-md px-6"
+            className="py-2 rounded-md px-6 black-font"
           />
           <br />
           <br />
@@ -73,7 +67,7 @@ function RegistrationPage() {
             placeholder="Password"
             value={password}
             onChange={handlePasswordChange}
-            className="py-2 rounded-md px-6"
+            className="py-2 rounded-md px-6 black-font"
           />
           <br />
           <br />
@@ -82,7 +76,7 @@ function RegistrationPage() {
             placeholder="email"
             value={email}
             onChange={handleEmailChange}
-            className="py-2 rounded-md px-6"
+            className="py-2 rounded-md px-6 black-font"
           />
           <br />
           <br />
