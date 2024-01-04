@@ -73,7 +73,7 @@ function HomePage() {
               <div className="card-primary group relative overflow-hidden ">
                 <img
                   className="w-full h-[700px]"
-                  src={`./images/${creature.imageUrl}`}
+                  src={creature.imageUrl}
                   alt="some image of a mutated animal"
                 />
                 <div className="img-text-overlay">

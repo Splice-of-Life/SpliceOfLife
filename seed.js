@@ -25,81 +25,81 @@ async function seed() {
   // }
 
 
-  const creatures = [];{
+  const creatures = []; {
     creatures.push(
       await prisma.creature.createMany({
         data: [
           {
-          breed: `Elephox`,
-          temperment: "Friendly",
-          lab: `Blue Moon Labs`,
-          food: `squirrels and bananas`,
-          price: 1.23,
-          imageUrl: "/images/Elephox.jpg",
-          inStock: true,
-          recommended: true, 
-        },
-        {
-          breed: `Dolphant`,
-          temperment: "Friendly",
-          lab: `Blue Moon Labs`,
-          food: `bananas and shrimp`,
-          price: 1.23,
-          imageUrl: "/images/dolphant.jpg",
-          inStock: true,
-          recommended: false, 
-        },
-        {
-          breed: `Foxfish`,
-          temperment: "Deadly",
-          lab: `Blue Moon Labs`,
-          food: `squirrels and worms`,
-          price: 1.23,
-          imageUrl: "/images/foxfish.jpg",
-          inStock: false,
-          recommended: true, 
-        },
-        {
-          breed: `Hippobat`,
-          temperment: "Clumsy",
-          lab: `Blue Moon Labs`,
-          food: `watermelons and mosquitoes`,
-          price: 1.23,
-          imageUrl: "/images/hippobat.jpg",
-          inStock: true,
-          recommended: true, 
-        },
-        {
-          breed: `Sharkbeaver`,
-          temperment: "Leathal",
-          lab: `Blue Moon Labs`,
-          food: `Pine trees and swimmers`,
-          price: 1.23,
-          imageUrl: "/images/shark-beaver.jpg",
-          inStock: true,
-          recommended: false, 
-        },
-        {
-          breed: `Tigerturtle`,
-          temperment: "Faster than you think",
-          lab: `Blue Moon Labs`,
-          food: `Lettuce and raw meat`,
-          price: 1.23,
-          imageUrl: "/images/tigerturtle.jpg",
-          inStock: true,
-          recommended: true,
-        },
-        {
-          breed: `Walrant`,
-          temperment: "Fast Breeder",
-          lab: `Blue Moon Labs`,
-          food: `Picnic baskets and fish`,
-          price: 1.23,
-          imageUrl: "/images/walrant.jpg",
-          inStock: true,
-          recommended: false, 
-        },
-      ]
+            breed: `Elephox`,
+            temperment: "Friendly",
+            lab: `Blue Moon Labs`,
+            food: `squirrels and bananas`,
+            price: 1.23,
+            imageUrl: "/images/Elephox.jpg",
+            inStock: true,
+            recommended: true,
+          },
+          {
+            breed: `Dolphant`,
+            temperment: "Friendly",
+            lab: `Blue Moon Labs`,
+            food: `bananas and shrimp`,
+            price: 1.23,
+            imageUrl: "/images/dolphant.jpg",
+            inStock: true,
+            recommended: false,
+          },
+          {
+            breed: `Foxfish`,
+            temperment: "Deadly",
+            lab: `Blue Moon Labs`,
+            food: `squirrels and worms`,
+            price: 1.23,
+            imageUrl: "/images/foxfish.jpg",
+            inStock: false,
+            recommended: true,
+          },
+          {
+            breed: `Hippobat`,
+            temperment: "Clumsy",
+            lab: `Blue Moon Labs`,
+            food: `watermelons and mosquitoes`,
+            price: 1.23,
+            imageUrl: "/images/hippobat.jpg",
+            inStock: true,
+            recommended: true,
+          },
+          {
+            breed: `Sharkbeaver`,
+            temperment: "Leathal",
+            lab: `Blue Moon Labs`,
+            food: `Pine trees and swimmers`,
+            price: 1.23,
+            imageUrl: "/images/shark-beaver.jpg",
+            inStock: true,
+            recommended: false,
+          },
+          {
+            breed: `Tigerturtle`,
+            temperment: "Faster than you think",
+            lab: `Blue Moon Labs`,
+            food: `Lettuce and raw meat`,
+            price: 1.23,
+            imageUrl: "/images/tigerturtle.jpg",
+            inStock: true,
+            recommended: true,
+          },
+          {
+            breed: `Walrant`,
+            temperment: "Fast Breeder",
+            lab: `Blue Moon Labs`,
+            food: `Picnic baskets and fish`,
+            price: 1.23,
+            imageUrl: "/images/walrant.jpg",
+            inStock: true,
+            recommended: false,
+          },
+        ]
       })
     );
   }
@@ -122,12 +122,12 @@ async function seed() {
     });
     for (let i = 0; i < creatures.length; i++) {
       if (Math.random() < 0.5) continue; // 50% chance of adding a creature to the shopping cart
-      await prisma.cartCreature.create({
-        data: {
-          creatureId: creatures[i].id,
-          shoppingCartId: shoppingCart.id,
-        },
-      });
+      // await prisma.cartCreature.create({
+      //   data: {
+      //     creature: creatures[i],
+      //     shoppingCart: shoppingCart,
+      //   },
+      // });
     }
   }
 
