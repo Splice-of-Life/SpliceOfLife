@@ -71,3 +71,7 @@ body {
 .vh {
   height: 100vh;
 }
+
+.black-font {
+  color: black;
+}

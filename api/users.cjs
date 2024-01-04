@@ -7,7 +7,13 @@ const jwt = require("jsonwebtoken");
 
 // POST /api/users/register //
 router.post("/register", async (req, res, next) => {
+  // this route registers a new user
   const { username, password, email } = req.body;
+  if (!(username && password && email)) {
+    res.status(400).send("Username, password, and email are required");
+    return next()
+  }
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
     // Hash the password using bcrypt
     const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -23,12 +29,15 @@ router.post("/register", async (req, res, next) => {
     delete user.password;
     res.send(user);
   } catch (error) {
-    next(error);
+    // TODO: i think it could be something else that we could handle
+    res.status(400).send("Username or email already exists")
+    next();
   }
 });
 
 // POST /api/users/login //
 router.post("/login", async (req, res, next) => {
+  // this route takes a username and password and returns a JWT
   const { username, password } = req.body;
   const secretKey = process.env.JWT_SECRET;
 
