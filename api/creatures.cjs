@@ -26,4 +26,17 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  // grab the id from the url
+  const { id } = req.params;
+  try {
+    const creature = await prisma.creature.delete({
+      where: { id: +id },
+    });
+    res.send(creature);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
