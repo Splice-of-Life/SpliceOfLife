@@ -41,6 +41,7 @@ router.use(async (req, res, next) => {
 router.use("/users", require("./users.cjs"));
 router.use("/creatures", require("./creatures.cjs"));
 router.use("/test", require("./test.cjs"));
+router.use("/cart", require("./cart.cjs"));
 
 // send error if no routes matched
 router.use((error, req, res, next) => {
