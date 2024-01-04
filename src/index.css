@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  color-scheme: light dark;
+  color-scheme: dark;
   box-sizing: border-box;
 }
 
@@ -76,6 +76,6 @@ body {
   height: 100vh;
 }
 
-/* .black-font {
-  color: black;
-} */
+.blur {
+  filter: blur(5px);
+}

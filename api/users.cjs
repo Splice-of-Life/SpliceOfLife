@@ -11,7 +11,7 @@ router.post("/register", async (req, res, next) => {
   const { username, password, email } = req.body;
   if (!(username && password && email)) {
     res.status(400).send("Username, password, and email are required");
-    return next()
+    return next();
   }
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
@@ -30,7 +30,7 @@ router.post("/register", async (req, res, next) => {
     res.send(user);
   } catch (error) {
     // TODO: i think it could be something else that we could handle
-    res.status(400).send("Username or email already exists")
+    res.status(400).send("Username or email already exists");
     next();
   }
 });
@@ -83,6 +83,37 @@ router.get("/:id", async (req, res, next) => {
   try {
     const user = await prisma.user.findUnique({
       where: { id: +id },
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  // grab the id from the url
+  const { id } = req.params;
+  try {
+    const user = await prisma.user.delete({
+      where: { id: +id },
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/:id", async (req, res, next) => {
+  // grab the id from the url
+  const { id } = req.params;
+  const { username, email } = req.body;
+  try {
+    const user = await prisma.user.update({
+      where: { id: +id },
+      data: {
+        username,
+        email,
+      },
     });
     res.send(user);
   } catch (error) {

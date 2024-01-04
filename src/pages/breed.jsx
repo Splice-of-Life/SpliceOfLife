@@ -43,10 +43,11 @@ function BreedPage() {
             />
           </div>
           <div>
-            <h2>Breed: {creature.breed}</h2>
+            <h2 className="text-6xl mb-8">{creature.breed}</h2>
             <h2>Temperament: {creature.temperment}</h2>
             <h2>Lab: {creature.lab}</h2>
             <h2>Food: {creature.food}</h2>
+            <br />
             <h2>Price: {creature.price}</h2>
             <h2>In Stock: {creature.inStock ? "Yes" : "No"}</h2>
             <h2>Recommended: {creature.recommended ? "Yes" : "No"}</h2>
