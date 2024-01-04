@@ -22,9 +22,12 @@ function LoginPage() {
         username,
         password,
       });
+      console.log("RESPONSE", response)
       console.log(response.data.message);
       // Handle successful login, e.g., store token in localStorage
       if (response.data.message === "Login successful") {
+        // set token
+        localStorage.setItem("token", response.data.token);
         window.location.href = "/";
       } else {
         handleInvalidLogin();
