@@ -52,7 +52,7 @@ function LoginPage() {
               placeholder="Username"
               value={username}
               onChange={handleUsernameChange}
-              className="py-2 rounded-md px-6"
+              className="py-2 rounded-md px-6 black-font"
             />
             <br />
             <br />
@@ -61,7 +61,7 @@ function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
-              className="py-2 rounded-md px-6"
+              className="py-2 rounded-md px-6 black-font"
             />
             <br />
             <br />
