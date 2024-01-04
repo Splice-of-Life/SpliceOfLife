@@ -23,7 +23,8 @@ function LoginPage() {
         password,
       });
       console.log(response.data.message);
-      // Handle successful login, e.g., store token in localStorage
+      window.localStorage.setItem("TOKEN", response.data.token);
+      // Handle successful login
       if (response.data.message === "Login successful") {
         window.location.href = "/";
       } else {

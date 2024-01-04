@@ -28,7 +28,6 @@ function BreedPage() {
   // const handlecartbtn = () =>{
   //   console.log("cart button pushed");
   //   window.location.href = `/cart?id=${id}`;
-    
 
   // };
 
@@ -58,15 +57,13 @@ function BreedPage() {
               Back
             </button>
             {/* this section conditionally renders an add to cart button if it is in stock */}
-              { creature.inStock === true && (
-                <>
-                  <Link to= {`/cart?id=${id}` }>
-                    <button className="btn2 mt-8 ">
-                      Add to Cart
-                    </button>
-                  </Link>
-                </>
-              )}
+            {creature.inStock === true && (
+              <>
+                <Link to={`/cart?id=${id}`}>
+                  <button className="btn5 mt-8 ml-4">Add to Cart</button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

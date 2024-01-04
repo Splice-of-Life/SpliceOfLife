@@ -6,7 +6,7 @@ export default function RegistrationPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [response, setResponse] = useState('')
+  const [response, setResponse] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -22,21 +22,23 @@ export default function RegistrationPage() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("api/users/register", {
-        username: username,
-        password: password,
-        email: email,
-      },
+      const response = await axios.post(
+        "api/users/register",
+        {
+          username: username,
+          password: password,
+          email: email,
+        },
         {
           validateStatus: () => true,
-        },
+        }
       );
       if (response.status === 200) {
-        setResponse('Registration Successful')
+        setResponse("Registration Successful");
         window.location.href = "/login";
       } else {
         // TODO: get error message from response
-        setResponse(`Error: ${response.data}`)
+        setResponse(`Error: ${response.data}`);
       }
     } catch (error) {
       console.error("Registration failed:", error.message);
@@ -88,9 +90,7 @@ export default function RegistrationPage() {
             Register
           </button>
         </form>
-        <div>
-          {response}
-        </div>
+        <div>{response}</div>
       </div>
     </section>
   );
