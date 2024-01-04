@@ -26,6 +26,8 @@ function LoginPage() {
       window.localStorage.setItem("TOKEN", response.data.token);
       // Handle successful login
       if (response.data.message === "Login successful") {
+        // set token
+        localStorage.setItem("token", response.data.token);
         window.location.href = "/";
       } else {
         handleInvalidLogin();
@@ -53,7 +55,7 @@ function LoginPage() {
               placeholder="Username"
               value={username}
               onChange={handleUsernameChange}
-              className="py-2 rounded-md px-6"
+              className="py-2 rounded-md px-6 black-font"
             />
             <br />
             <br />
@@ -62,7 +64,7 @@ function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
-              className="py-2 rounded-md px-6"
+              className="py-2 rounded-md px-6 black-font"
             />
             <br />
             <br />
